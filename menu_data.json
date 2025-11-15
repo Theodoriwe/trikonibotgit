@@ -1,0 +1,117 @@
+{
+  "breakfast": [
+    { "id": 1, "name": "Тортилья с тунцом", "description": "", "price": 460, "isPopular": true, "category": "breakfast", "image": "/z1.webp" },
+    { "id": 221, "name": "Киш со шпинатом", "description": "", "price": 540, "isPopular": true, "category": "breakfast", "image": "/sc1.webp" },
+    { "id": 2, "name": "Овсяная каша", "description": "с фруктами и семенами чиа. молоко на выбор: на кокосовом / на коровьем", "price": 390, "category": "breakfast", "image": "/z2.webp" },
+    { "id": 3, "name": "Пшенная каша", "description": "С тыквой", "price": 490, "category": "breakfast", "image": "/z15.webp" },
+    { "id": 4, "name": "Гречневая каша", "description": "С цыпленком", "price": 520, "category": "breakfast", "image": "/public/s.webp" },
+    { "id": 224, "name": "Полба с беконом", "description": "и яйцом пашот", "price": 560, "category": "breakfast", "image": "/public/sc2.webp" },
+    { "id": 5, "name": "Блинчики", "description": "со сметаной / вареньем / сгущенкой", "price": 340, "category": "breakfast", "image": "/public/b5.webp" },
+    { "id": 6, "name": "Блинчики С  лососем", "description": "и творожным сыром", "price": 720, "category": "breakfast", "image": "/z3.webp" },
+    { "id": 7, "name": "Сырники", "description": "со сметаной, ягодами и фруктами", "price": 560, "category": "breakfast", "image": "/z4.webp" },
+    { "id": 8, "name": "Домащний", "description": "яйца всмятку, тосты, лабне, руккола", "price": 440, "category": "breakfast", "image": "/s.webp" },
+    { "id": 9, "name": "Гуакамоле", "description": "с яйцами пашот и томатами", "price": 570, "category": "breakfast", "image": "/z5.webp" },
+    { "id": 229, "name": "Шпинат на хлебе", "description": "с яйцами пашот", "price": 570, "category": "breakfast", "image": "/s.webp" },
+    { "id": 10, "name": "Хашбраун", "description": "с беконом, соусом бенедикт и яйцом пашот", "price": 640, "category": "breakfast", "image": "/z8.webp" },
+    { "id": 211, "name": "Хашбраун", "description": "с лососем, соусом бенедикт и яйцом пашот", "price": 790, "category": "breakfast", "image": "/z9.webp" },
+    { "id": 212, "name": "Завтрак английского шпиона", "description": "глазунья, микс салата, колбаски, фасоль, томаты, тосты из чиабатты", "price": 640, "category": "breakfast", "image": "/z6.webp" },
+    { "id": 213, "name": "Цезарь в горах", "description": "глазунья из 2 яиц, лист салат, соус цезарь,овощи, куринное бедро, пармезан", "price": 690, "category": "breakfast", "image": "/z7.webp" },
+    { "id": 214, "name": "Завтрак счастливого человека", "description": "", "price": 1140, "category": "breakfast", "image": "/zzk.webp" },
+    { "id": 2214, "name": "Деревенский", "description": "яйца, гуакамоле, лосось, тосты ржаные, свекла, микс салата с черри", "price": 890, "category": "breakfast", "image": "/s.webp" },
+    { "id": 2134, "name": "Рис с тунцом", "description": "", "price": 640, "category": "breakfast", "image": "/z35.webp" },
+    { "id": 2414, "name": "Мини морковный пирог", "description": "", "price": 150, "category": "breakfast", "image": "/s.webp" },
+    { "id": 2164, "name": "Мини творожный пирог", "description": "", "price": 150, "category": "breakfast", "image": "/s.webp" },
+    { "id": 25314, "name": "Мини безе", "description": "с ягодой и тыквенными семечками", "price": 150, "category": "breakfast", "image": "/s.webp" },
+    { "id": 25614, "name": "Мини медовик", "description": "", "price": 150, "category": "breakfast", "image": "/s.webp" }
+  ],
+  "appetizers": [
+    { "id": 11, "name": "Сало с тостами", "description": "с горчицей и зеленым луком", "price": 480, "isPopular": true, "category": "appetizers", "image": "/s6.webp" },
+    { "id": 12, "name": "Паштет из цыпленка", "description": "", "price": 590, "category": "appetizers", "image": "/s1.webp" },
+    { "id": 13, "name": "Хумус с бастурмой", "description": "и лепешкой роти", "price": 620, "category": "appetizers", "image": "/s2.webp" },
+    { "id": 14, "name": "Домащная бастурма, индейка", "description": "", "price": 670, "category": "appetizers", "image": "/s.webp" },
+    { "id": 15, "name": "Зон зам", "description": "ассорти из солений с салом ", "price": 870, "category": "appetizers", "image": "/s4.webp" },
+    { "id": 16, "name": "Тартар из говядины с тостами", "description": "", "price": 940, "category": "appetizers", "image": "/s3.webp" },
+    { "id": 17, "name": "Капуста квашеная", "description": "", "price": 260, "category": "appetizers", "image": "/s.webp" }
+  ],
+  "salads": [
+    { "id": 21, "name": "Розовые томаты с мацони", "description": "", "price": 440, "category": "salads", "image": "/s15.webp" },
+    { "id": 22, "name": "Пастуший", "description": "овощной с брынзой, баклажаном и перцем на гриле", "price": 670, "isPopular": true, "category": "salads", "image": "/2.webp" },
+    { "id": 23, "name": "Хрустящие баклажаны с томатами", "description": "", "price": 560, "category": "salads", "image": "/s7.webp" },
+    { "id": 24, "name": "Альпийский", "description": "с томатами черри и хрустящими вешенками", "price": 690, "category": "salads", "image": "/s8.webp" },
+    { "id": 25, "name": "Микс с кедровым орехом", "description": " + Креветки - 270₽ • + Лосось - 460₽", "price": 520, "category": "salads", "image": "/s9.webp" },
+    { "id": 26, "name": "Зеленый салат", "description": "", "price": 490, "category": "salads", "image": "/s16.webp" },
+    { "id": 27, "name": "С печеной свеклой и сыром", "description": "", "price": 560, "category": "salads", "image": "/s10.webp" },
+    { "id": 28, "name": "С хрустящим цыпленком", "description": "", "price": 720, "category": "salads", "image": "/s17.webp" }
+  ],
+  "main": [
+    { "id": 31, "name": "Жареный рис с тунцом", "description": "", "price": 640, "isPopular": true, "category": "main", "image": "/z35.webp" },
+    { "id": 32, "name": "Стейк из тунца", "description": "", "price": 880, "category": "main", "image": "/r1.webp" },
+    { "id": 33, "name": "Карри с креветками", "description": "и овощами", "price": 940, "isPopular": true, "category": "main", "image": "/r155.webp" },
+    { "id": 34, "name": "Черноморская барабуля", "description": "", "price": 890, "isPopular": true, "category": "main", "image": "/r2.webp" },
+    { "id": 35, "name": "Дорадо", "description": "", "price": 1390, "isPopular": true, "category": "main", "image": "/r3.webp" },
+    { "id": 36, "name": "Морепродукты в соусе чкмерули", "description": "", "price": 2340, "isPopular": true, "category": "main", "image": "/r7.webp" },
+    { "id": 37, "name": "Лосось", "description": "с картофельным пюре и соусом из сморчков", "price": 2340, "isPopular": true, "category": "main", "image": "/r123.webp" }
+  ],
+  "desserts": [
+    { "id": 41, "name": "Драники картофельные со сметаной", "description": "• добавь лосось с/с + 460₽", "price": 440, "category": "desserts", "image": "/g1.webp" },
+    { "id": 42, "name": "Аджапсандал", "description": "в тонком лаваше с сулугуни", "price": 570, "category": "desserts", "image": "/g2.webp" },
+    { "id": 44, "name": "Рапан в соусе со сморчками", "description": "", "price": 1090, "category": "desserts", "image": "/public/b39.webp" },
+    { "id": 45, "name": "Камамбер запеченный", "description": "", "price": 1390, "category": "desserts", "image": "/g3.webp" },
+    { "id": 46, "name": "Острые куриные крылья", "description": "", "price": 670, "category": "desserts", "image": "/sv2.webp" }
+  ],
+  "beef": [
+    { "id": 56, "name": "Люля из курицы", "description": "", "price": 670, "category": "beef", "image": "/m1.webp" },
+    { "id": 57, "name": "Цыпленок с чесночным соусом", "description": "", "price": 1090, "category": "beef", "image": "/m2.webp" },
+    { "id": 58, "name": "Шефбургер", "description": "", "price": 990, "category": "beef", "image": "/m3.webp" },
+    { "id": 59, "name": "Говяжьи щеки", "description": "с картофельным пюре", "price": 1140, "category": "beef", "image": "/m5.webp" },
+    { "id": 60, "name": "Котлета от шефа", "description": "с полбой, белыми грибами и соусом демигласс", "price": 940, "category": "beef", "image": "/m4.webp" },
+    { "id": 61, "name": "Люля из баранины", "description": "", "price": 890, "category": "beef", "image": "/public/b47.webp" },
+    { "id": 62, "name": "Шашлык из баранины", "description": "", "price": 890, "category": "beef", "image": "/sv3.webp" },
+    { "id": 272, "name": "Мачете стейк", "description": "с соусом сливочно-перечныи", "price": 1140, "category": "steak", "image": "/e1.webp" },
+    { "id": 4572, "name": "Бефстроганов", "description": "с пбре и малосольными огурцами", "price": 1190, "category": "steak", "image": "/e23.webp" },
+    { "id": 43277, "name": "Рибай", "description": "", "price": 1590, "category": "steak", "image": "/public/s.webp" },
+    { "id": 7323, "name": "Миньон", "description": "с перечным соусом", "price": 2190, "category": "steak", "image": "/1.webp" },
+    { "id": 7446, "name": "Стриплойн", "description": "", "price": 2420, "category": "steak", "image": "/e5.webp" }
+  ],
+  "steak": [
+    { "id": 72, "name": "Лепешка роти", "description": "", "price": 150, "category": "steak", "image": "/iz1.webp" },
+    { "id": 73, "name": "Женгялов хац", "description": "лепешка с травами", "price": 370, "category": "steak", "image": "/e2.webp" },
+    { "id": 74, "name": "Хачапури лодочка", "description": "", "price": 760, "category": "steak", "image": "/e332.webp" },
+    { "id": 76, "name": "Хачапури имеритинский", "description": "", "price": 890, "category": "steak", "image": "/e555.webp" },
+    { "id": 77, "name": "Пирог с зеленью и сыром", "description": "", "price": 890, "category": "steak", "image": "/public/b534.webp" },
+    { "id": 7327, "name": "Ассорти мезе", "description": "Лабне, мухамара, бабагануш, аджапсандал, хумус, 2 лепешки", "price": 1190, "category": "steak", "image": "/public/s54.webp" }
+  ],
+  "fire": [
+    { "id": 87, "name": "Суп лапша", "description": "", "price": 460, "category": "fire", "image": "/ss2.webp" },
+    { "id": 88, "name": "Том ям овощной", "description": "", "price": 490, "category": "fire", "image": "/ss3.webp" },
+    { "id": 89, "name": "Том ям с креветками", "description": "", "price": 790, "category": "fire", "image": "/ss4.webp" },
+    { "id": 8923, "name": "Борщ краснополянский", "description": "", "price": 560, "category": "fire", "image": "/ss5.webp" },
+    { "id": 89321, "name": "Грибной наваристый", "description": "", "price": 640, "category": "fire", "image": "/ss6.webp" },
+    { "id": 8945, "name": "Уха", "description": "с пирожком", "price": 790, "category": "fire", "image": "/ss7.webp" },
+    { "id": 89432, "name": "Буглама из баранины", "description": "", "price": 1190, "category": "fire", "image": "/ss8.webp" }
+  ],
+  "lepka": [
+    { "id": 99, "name": "Антивареники с креветками", "description": "", "price": 670, "category": "lepka", "image": "/l1.webp" },
+    { "id": 100, "name": "Пельмени с говядиной", "description": "", "price": 590, "category": "lepka", "image": "/l2.webp" },
+    { "id": 101, "name": "Пельмени с бараниной", "description": "", "price": 640, "category": "lepka", "image": "/l2.webp" },
+    { "id": 102, "name": "Паста со сморчками", "description": "", "price": 880, "category": "lepka", "image": "/l55.webp" },
+    { "id": 103, "name": "Паста с гребешками", "description": "", "price": 940, "category": "lepka", "image": "/s.webp" },
+    { "id": 13203, "name": "Вареники", "description": "с картофелем и грибами", "price": 540, "category": "lepka", "image": "/l3.webp" }
+  ],
+  "garn": [
+    { "id": 113, "name": "Картофель фри", "description": "", "price": 420, "category": "garn", "image": "/q3.webp" },
+    { "id": 114, "name": "Картофельное пюре", "description": "", "price": 360, "category": "garn", "image": "/q4.webp" },
+    { "id": 115, "name": "Овощи гриль", "description": "перец болгарский, цуккини, капуста брюссельская и брокколи", "price": 560, "category": "garn", "image": "/q1.webp" },
+    { "id": 116, "name": "Аджапсандал", "description": "", "price": 490, "category": "garn", "image": "/q2.webp" },
+    { "id": 1163232, "name": "Картофель жаренный с грибами", "description": "", "price": 490, "category": "garn", "image": "/q23.webp" }
+  ],
+  "des": [
+    { "id": 126, "name": "Мороженое", "description": "", "price": 190, "category": "des", "image": "/s.webp" },
+    { "id": 127, "name": "Лимонный чизкейк", "description": "", "price": 460, "category": "des", "image": "/d1.webp" },
+    { "id": 128, "name": "Медовик", "description": "", "price": 490, "category": "des", "image": "/dd1.webp" },
+    { "id": 129, "name": "Морковный пирог", "description": "", "price": 520, "category": "des", "image": "/d3.webp" },
+    { "id": 130, "name": "Пирог из творога", "description": "", "price": 520, "category": "des", "image": "/d2.webp" },
+    { "id": 13210, "name": "Панна-котта из мацони", "description": "", "price": 390, "category": "des", "image": "/s.webp" },
+    { "id": 1323210, "name": "Яблочно-грушевый штрудель", "description": "", "price": 740, "category": "des", "image": "/d223.webp" }
+  ]
+}
