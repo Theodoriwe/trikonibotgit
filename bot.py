@@ -521,7 +521,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             # После удаления обновляем список блюд в стоп-листе
             stop_list, _ = await load_status_from_gist_or_local()
             if not stop_list:
-                await query.edit_message_text(text="📭 Стоп-лист пуст.")
+                await query.edit_message_text(text="ostringstream Стоп-лист пуст.")
                 await start_command(update, context)
                 return
                 
@@ -586,10 +586,11 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
                 [InlineKeyboardButton("4 часа", callback_data="delivery_off_4")],
                 [InlineKeyboardButton("8 часов", callback_data="delivery_off_8")],
                 [InlineKeyboardButton("24 часа", callback_data="delivery_off_24")],
+                [InlineKeyboardButton("Другая дата", callback_data="delivery_date_picker")],
                 [InlineKeyboardButton("<< Назад", callback_data="back_to_main")]
             ]
             reply_markup = InlineKeyboardMarkup(keyboard)
-            await query.edit_message_text(text="⏱️ Выберите, на сколько часов отключить доставку:", reply_markup=reply_markup)
+            await query.edit_message_text(text="⏱️ Выберите, на сколько времени отключить доставку:", reply_markup=reply_markup)
 
     # Отключение доставки на определенное время
     elif data.startswith("delivery_off_"):
@@ -614,11 +615,117 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             text=message,
             reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("<< Назад", callback_data="back_to_main")]])
         )
+    
+    # Выбор даты для отключения доставки
+    elif data == "delivery_date_picker":
+        keyboard = [
+            [InlineKeyboardButton("1 день", callback_data="delivery_date_1")],
+            [InlineKeyboardButton("3 дня", callback_data="delivery_date_3")],
+            [InlineKeyboardButton("1 неделя", callback_data="delivery_date_7")],
+            [InlineKeyboardButton("2 недели", callback_data="delivery_date_14")],
+            [InlineKeyboardButton("1 месяц", callback_data="delivery_date_30")],
+            [InlineKeyboardButton("Свой период", callback_data="delivery_custom_date")],
+            [InlineKeyboardButton("<< Назад", callback_data="toggle_delivery")]
+        ]
+        reply_markup = InlineKeyboardMarkup(keyboard)
+        await query.edit_message_text(text="📅 Выберите срок отключения доставки:", reply_markup=reply_markup)
+    
+    # Отключение доставки на фиксированный срок
+    elif data.startswith("delivery_date_"):
+        days_str = data[14:]
+        try:
+            days = int(days_str)
+        except ValueError:
+            await query.edit_message_text(text="❌ Ошибка: некорректное количество дней.")
+            return
 
+        disabled_until = datetime.now() + timedelta(days=days)
+        stop_list, _ = await load_status_from_gist_or_local()
+        delivery_status = {"disabled_until": disabled_until.isoformat()}
+        success = await save_status_to_gist_or_local(stop_list, delivery_status)
+        
+        if success:
+            message = f"🚫 Доставка отключена до {disabled_until.strftime('%d.%m.%Y %H:%M')}!\n\nВыберите следующее действие:"
+        else:
+            message = f"⚠️ Доставка отключена до {disabled_until.strftime('%d.%m.%Y %H:%M')}, но не удалось сохранить изменения на сервере. Изменения сохранены локально.\n\nВыберите следующее действие:"
+            
+        await query.edit_message_text(
+            text=message,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("<< Назад", callback_data="back_to_main")]])
+        )
+    
+    # Ввод собственной даты
+    elif data == "delivery_custom_date":
+        await query.edit_message_text(
+            "📅 Введите дату и время отключения доставки в формате:\n\nДД.ММ.ГГГГ ЧЧ:ММ\n\nПример: 25.12.2025 18:00",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("<< Назад", callback_data="delivery_date_picker")]
+            ])
+        )
+        context.user_data['awaiting_custom_date'] = True
+    
     # Возврат в главное меню
     elif data == "back_to_main":
         context.user_data.pop('awaiting_new_pin', None)  # Сбрасываем состояние ожидания нового пин-кода
+        context.user_data.pop('awaiting_custom_date', None)  # Сбрасываем состояние ожидания даты
         await start_command(update, context)
+
+
+# --- Обработчик ввода собственной даты ---
+async def handle_custom_date(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    user_id = update.effective_user.id
+    
+    # Проверяем аутентификацию
+    if not await is_authenticated(user_id):
+        await update.effective_message.reply_text("🔑 Требуется аутентификация")
+        await request_pin(update, context)
+        return
+
+    # Проверяем, ожидаем ли мы ввод даты
+    if not context.user_data.get('awaiting_custom_date'):
+        return
+
+    date_input = update.message.text.strip()
+    
+    try:
+        # Парсим дату из строки
+        parsed_datetime = datetime.strptime(date_input, "%d.%m.%Y %H:%M")
+        
+        # Проверяем, что дата не в прошлом
+        if parsed_datetime < datetime.now():
+            await update.message.reply_text(
+                "❌ Ошибка: дата не может быть в прошлом.\n\nВведите дату и время отключения доставки в формате:\n\nДД.ММ.ГГГГ ЧЧ:ММ\n\nПример: 25.12.2025 18:00",
+                reply_markup=InlineKeyboardMarkup([
+                    [InlineKeyboardButton("<< Назад", callback_data="delivery_date_picker")]
+                ])
+            )
+            return
+        
+        # Сохраняем статус
+        stop_list, _ = await load_status_from_gist_or_local()
+        delivery_status = {"disabled_until": parsed_datetime.isoformat()}
+        success = await save_status_to_gist_or_local(stop_list, delivery_status)
+        
+        if success:
+            message = f"🚫 Доставка отключена до {parsed_datetime.strftime('%d.%m.%Y %H:%M')}!"
+        else:
+            message = f"⚠️ Доставка отключена до {parsed_datetime.strftime('%d.%m.%Y %H:%M')}, но не удалось сохранить изменения на сервере. Изменения сохранены локально."
+        
+        await update.message.reply_text(
+            text=message,
+            reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("<< Назад", callback_data="back_to_main")]])
+        )
+        
+        # Сбрасываем состояние ожидания даты
+        context.user_data.pop('awaiting_custom_date', None)
+        
+    except ValueError:
+        await update.message.reply_text(
+            "❌ Неверный формат даты.\n\nВведите дату и время отключения доставки в формате:\n\nДД.ММ.ГГГГ ЧЧ:ММ\n\nПример: 25.12.2025 18:00",
+            reply_markup=InlineKeyboardMarkup([
+                [InlineKeyboardButton("<< Назад", callback_data="delivery_date_picker")]
+            ])
+        )
 
 
 # --- category_map из React-кода ---
@@ -711,6 +818,7 @@ def main():
     application.add_handler(CommandHandler("start", start_command))
     application.add_handler(CallbackQueryHandler(button_handler))
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_pin))
+    application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_custom_date))
     
     print("✅ Бот успешно запущен!")
     print("💬 Отправьте команду /start для начала работы")
