@@ -624,7 +624,6 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
             [InlineKeyboardButton("1 неделя", callback_data="delivery_date_7")],
             [InlineKeyboardButton("2 недели", callback_data="delivery_date_14")],
             [InlineKeyboardButton("1 месяц", callback_data="delivery_date_30")],
-            [InlineKeyboardButton("Свой период", callback_data="delivery_custom_date")],
             [InlineKeyboardButton("<< Назад", callback_data="toggle_delivery")]
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
@@ -832,3 +831,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
