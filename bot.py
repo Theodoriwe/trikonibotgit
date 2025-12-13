@@ -481,7 +481,7 @@ async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     elif data == "remove_from_stop":
         stop_list, _ = await load_status_from_gist_or_local()
         if not stop_list:
-            await query.edit_message_text(text="📭 Стоп-лист пуст.")
+            await query.edit_message_text(text="ostringstream Стоп-лист пуст.")
             await start_command(update, context)
             return
 
@@ -683,6 +683,9 @@ async def handle_custom_date(update: Update, context: ContextTypes.DEFAULT_TYPE)
 
     # Проверяем, ожидаем ли мы ввод даты
     if not context.user_data.get('awaiting_custom_date'):
+        # Если пользователь не ожидает ввода даты, проверяем, не ожидаем ли мы пин-код
+        if not await is_authenticated(user_id):
+            await handle_pin(update, context)
         return
 
     date_input = update.message.text.strip()
